@@ -1,13 +1,16 @@
 <script>
-  export let color;
-  export let shape;
-  export let id;
-  export let groupClass;
-  export let svg;
-  export let noteOn;
-  export let noteOff;
-  export let noteOnDrag;
-  export let noteOffDrag;
+  import { scale } from "svelte/transition";
+
+  export let color,
+    shape,
+    id,
+    groupClass,
+    svg,
+    noteOn,
+    noteOff,
+    noteOnDrag,
+    noteOffDrag;
+  //   export let triggered;
 </script>
 
 <style>
@@ -156,6 +159,7 @@
   {shape}
   {groupClass} hex"
   {id}
+  transition:scale={{ duration: 500, delay: 500, opacity: 0.5, start: 0.5 }}
   on:mousedown|preventDefault={noteOn}
   on:mouseup|preventDefault={noteOff}
   on:mouseenter|preventDefault={noteOnDrag}

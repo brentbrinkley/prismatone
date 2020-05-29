@@ -3,9 +3,14 @@
   import { group1, group2 } from "./helpers/haydenLayout";
   import { onMount } from "svelte";
   import TileSet from "./TileSet.svelte";
+  import DevicePanel from "./DevicePanel.svelte";
+  import ScrollSwitch from "./ScrollSwitch.svelte";
 
   let synth;
-  let triggered = false;
+  let noteTriggered = false;
+  let mouseDown = false;
+  let toggle = true;
+
   const tileSetPanels = [
     "panel-A-1",
     "panel-B-1",
@@ -34,36 +39,47 @@
 
   const noteAction = {
     noteOn: e => {
-      triggered = true;
-      synth.triggerAttack(e.target.id);
-    },
-
-    noteOnDrag: e => {
-      if (!triggered) return;
+      noteTriggered = true;
+      mouseDown = true;
+      console.log(e);
       synth.triggerAttack(e.target.id);
     },
 
     noteOff: e => {
-      triggered = false;
       synth.triggerRelease(e.target.id);
+      noteTriggered = false;
+      mouseDown = false;
+    },
+
+    noteOnDrag: e => {
+      if (!mouseDown && !noteTriggered) return;
+      synth.triggerAttack(e.target.id);
+      noteTriggered = true;
     },
 
     noteOffDrag: e => {
-      if (!triggered) return;
+      if (!mouseDown) return;
+
       synth.triggerRelease(e.target.id);
+      noteTriggered = false;
     }
+  };
+
+  const setToggle = e => {
+    toggle = e.detail;
   };
 </script>
 
 <style>
-  body {
+  :global(body) {
     touch-action: pan-x pan-y;
+    padding: 0;
   }
-  body::-webkit-scrollbar {
+  :global(body::-webkit-scrollbar) {
     display: none;
   }
 
-  #app::-webkit-scrollbar {
+  :global(#app::-webkit-scrollbar) {
     display: none;
   }
   .master-grid {
@@ -80,22 +96,27 @@
   }
 </style>
 
-<div class="master-grid" this:bind={synth}>
-  <!-- Setting different classes for our tilesets -->
-  {#each tileSetPanels as panel, index}
-    {#if index % 2 === 0}
-      <TileSet
-        panelName={panel}
-        group={group1}
-        groupClass="span1"
-        {noteAction} />
-    {:else}
-      <TileSet
-        panelName={panel}
-        group={group2}
-        groupClass="span2"
-        {noteAction} />
-    {/if}
-  {/each}
+<div>
+  <div class="master-grid" bind:this={synth} class:no-touch={toggle}>
+    <!-- Setting different classes for our tilesets -->
+    {#each tileSetPanels as panel, index}
+      {#if index % 2 === 0}
+        <TileSet
+          panelName={panel}
+          group={group1}
+          groupClass="span1"
+          {noteAction} />
+      {:else}
+        <TileSet
+          panelName={panel}
+          group={group2}
+          groupClass="span2"
+          {noteAction} />
+      {/if}
+    {/each}
+  </div>
 
+  <DevicePanel>
+    <ScrollSwitch on:setToggle={setToggle} />
+  </DevicePanel>
 </div>

@@ -1,9 +1,8 @@
 <script>
   import Note from "./Note.svelte";
-  export let group;
-  export let panelName;
-  export let groupClass;
-  export let noteAction;
+
+  export let group, panelName, groupClass, noteAction;
+  // export let triggered;
 </script>
 
 <style>
