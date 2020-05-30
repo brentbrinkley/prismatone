@@ -6,8 +6,8 @@
   import DevicePanel from "./DevicePanel.svelte";
   import ScrollSwitch from "./ScrollSwitch.svelte";
 
-  let synth;
-  let noteTriggered = false;
+  let synth, audioContext;
+  let noteTriggered;
   let mouseDown = false;
   let toggle = true;
 
@@ -21,6 +21,10 @@
   ];
 
   onMount(() => {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+    window.scrollTo(183, 606);
+
     synth = new PolySynth(Synth, {
       oscillator: {
         type: "sine"
@@ -38,28 +42,29 @@
   });
 
   const noteAction = {
-    noteOn: e => {
-      noteTriggered = true;
+    noteOn: (e, noteState) => {
+      noteState();
       mouseDown = true;
-      console.log(e);
       synth.triggerAttack(e.target.id);
     },
 
-    noteOff: e => {
+    noteOff: (e, noteState) => {
+      noteState();
       synth.triggerRelease(e.target.id);
       noteTriggered = false;
       mouseDown = false;
     },
 
-    noteOnDrag: e => {
+    noteOnDrag: (e, noteState) => {
       if (!mouseDown && !noteTriggered) return;
+      noteState();
       synth.triggerAttack(e.target.id);
       noteTriggered = true;
     },
 
-    noteOffDrag: e => {
+    noteOffDrag: (e, noteState) => {
       if (!mouseDown) return;
-
+      noteState();
       synth.triggerRelease(e.target.id);
       noteTriggered = false;
     }
@@ -115,7 +120,6 @@
       {/if}
     {/each}
   </div>
-
   <DevicePanel>
     <ScrollSwitch on:setToggle={setToggle} />
   </DevicePanel>

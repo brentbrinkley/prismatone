@@ -2,7 +2,6 @@
   import Note from "./Note.svelte";
 
   export let group, panelName, groupClass, noteAction;
-  // export let triggered;
 </script>
 
 <style>
@@ -61,6 +60,7 @@
 </style>
 
 <div class={panelName}>
+
   {#each group as note (note.midiVal)}
     <Note
       color={note.color}
@@ -68,6 +68,7 @@
       svg={note.svg}
       id={note.commonNotation}
       {groupClass}
+      noteTriggered={false}
       {...noteAction} />
   {/each}
 </div>

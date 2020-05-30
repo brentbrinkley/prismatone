@@ -1,5 +1,6 @@
 <script>
   import { scale } from "svelte/transition";
+  import { createEventDispatcher } from "svelte";
 
   export let color,
     shape,
@@ -9,8 +10,15 @@
     noteOn,
     noteOff,
     noteOnDrag,
-    noteOffDrag;
-  //   export let triggered;
+    noteOffDrag,
+    noteTriggered;
+
+  const setNoteStateOn = () => {
+    noteTriggered = true;
+  };
+  const setNoteStateOff = () => {
+    noteTriggered = false;
+  };
 </script>
 
 <style>
@@ -74,6 +82,9 @@
     transform: rotate(-60deg);
   }
   .triggered {
+    transform: scale(0.9);
+  }
+  .triggerOnDrag {
     transform: scale(0.9);
   }
 
@@ -159,12 +170,12 @@
   {shape}
   {groupClass} hex"
   {id}
-  transition:scale={{ duration: 500, delay: 500, opacity: 0.5, start: 0.5 }}
-  on:mousedown|preventDefault={noteOn}
-  on:mouseup|preventDefault={noteOff}
-  on:mouseenter|preventDefault={noteOnDrag}
-  on:mouseleave|preventDefault={noteOffDrag}
-  on:touchstart|preventDefault={noteOn}
-  on:touchend|preventDefault={noteOff}>
+  class:triggered={noteTriggered}
+  on:mousedown|preventDefault={e => noteOn(e, setNoteStateOn)}
+  on:mouseup|preventDefault={e => noteOff(e, setNoteStateOff)}
+  on:mouseenter|preventDefault={e => noteOnDrag(e, setNoteStateOn)}
+  on:mouseleave|preventDefault={e => noteOffDrag(e, setNoteStateOff)}
+  on:touchstart|preventDefault={e => noteOn(e, setNoteStateOn)}
+  on:touchend|preventDefault={e => noteOff(e, setNoteStateOff)}>
   {@html svg}
 </div>

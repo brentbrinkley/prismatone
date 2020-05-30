@@ -1,7 +1,3 @@
-<script>
-  // let toggle = false;
-</script>
-
 <style>
   .device-panel {
     position: fixed;
