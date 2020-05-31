@@ -11,6 +11,8 @@
     noteOff,
     noteOnDrag,
     noteOffDrag,
+    noteOnTouch,
+    noteOffTouch,
     noteTriggered;
 
   const setNoteStateOn = () => {
@@ -29,6 +31,7 @@
     pointer-events: none;
     opacity: 0.4;
     filter: drop-shadow(2px 3px 3px rgba(255, 255, 255, 0.2));
+    touch-action: none;
   }
 
   :global(#minus) {
@@ -82,9 +85,6 @@
     transform: rotate(-60deg);
   }
   .triggered {
-    transform: scale(0.9);
-  }
-  .triggerOnDrag {
     transform: scale(0.9);
   }
 
@@ -171,11 +171,10 @@
   {groupClass} hex"
   {id}
   class:triggered={noteTriggered}
-  on:mousedown|preventDefault={e => noteOn(e, setNoteStateOn)}
-  on:mouseup|preventDefault={e => noteOff(e, setNoteStateOff)}
-  on:mouseenter|preventDefault={e => noteOnDrag(e, setNoteStateOn)}
-  on:mouseleave|preventDefault={e => noteOffDrag(e, setNoteStateOff)}
-  on:touchstart|preventDefault={e => noteOn(e, setNoteStateOn)}
-  on:touchend|preventDefault={e => noteOff(e, setNoteStateOff)}>
+  on:pointerdown|preventDefault|stopPropagation={e => noteOn(e, setNoteStateOn)}
+  on:pointerup|preventDefault|stopPropagation={e => noteOff(e, setNoteStateOff)}
+  on:pointerenter|preventDefault|stopPropagation={e => noteOnDrag(e, setNoteStateOn)}
+  on:pointerleave|preventDefault|stopPropagation={e => noteOffDrag(e, setNoteStateOff)}>
+
   {@html svg}
 </div>

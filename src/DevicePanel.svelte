@@ -9,6 +9,11 @@
     padding: 30px;
     touch-action: none;
     display: flex;
+    user-select: none;
+  }
+
+  h2 {
+    user-select: none;
   }
 
   .device-name {

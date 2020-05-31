@@ -9,7 +9,8 @@
   let synth, audioContext;
   let noteTriggered;
   let mouseDown = false;
-  let toggle = true;
+  let toggle = false;
+  let currentNote;
 
   const tileSetPanels = [
     "panel-A-1",
@@ -43,9 +44,13 @@
 
   const noteAction = {
     noteOn: (e, noteState) => {
+      currentNote = e.target.id;
+
       noteState();
       mouseDown = true;
       synth.triggerAttack(e.target.id);
+      e.target.releasePointerCapture(e.pointerId);
+      console.log(e.target);
     },
 
     noteOff: (e, noteState) => {
@@ -56,7 +61,7 @@
     },
 
     noteOnDrag: (e, noteState) => {
-      if (!mouseDown && !noteTriggered) return;
+      if (!mouseDown) return;
       noteState();
       synth.triggerAttack(e.target.id);
       noteTriggered = true;
@@ -67,6 +72,23 @@
       noteState();
       synth.triggerRelease(e.target.id);
       noteTriggered = false;
+    },
+    noteOnTouch: (e, noteState) => {
+      if (currentNote !== e.target.id) {
+        console.log(e);
+      }
+      // console.log(e.target.id);
+      // noteState();
+      // mouseDown = true;
+      // synth.triggerAttack(e.target.id);
+      // console.log(e.changedTouches);
+    },
+
+    noteOffTouch: (e, noteState) => {
+      noteState();
+      synth.triggerRelease(e.target.id);
+      noteTriggered = false;
+      mouseDown = false;
     }
   };
 
