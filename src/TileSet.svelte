@@ -11,6 +11,7 @@
     grid-template-columns: repeat(6, 50px);
     grid-template-rows: repeat(28, 88px);
     grid-row-start: 1;
+    touch-action: none;
   }
 
   .panel-B-1 {
@@ -20,6 +21,7 @@
     grid-template-rows: repeat(28, 88px);
     grid-row-start: 2;
     grid-column-start: 6;
+    touch-action: none;
   }
 
   .panel-A-2 {
@@ -29,6 +31,7 @@
     grid-template-rows: repeat(28, 88px);
     grid-row-start: 3;
     grid-column-start: 13;
+    touch-action: none;
   }
 
   .panel-B-2 {
@@ -38,6 +41,7 @@
     grid-template-rows: repeat(28, 88px);
     grid-row-start: 4;
     grid-column-start: 18;
+    touch-action: none;
   }
 
   .panel-A-3 {
@@ -47,6 +51,7 @@
     grid-template-rows: repeat(28, 88px);
     grid-row-start: 5;
     grid-column-start: 25;
+    touch-action: none;
   }
 
   .panel-B-3 {
@@ -56,6 +61,7 @@
     grid-template-rows: repeat(28, 88px);
     grid-row-start: 6;
     grid-column-start: 30;
+    touch-action: none;
   }
 </style>
 

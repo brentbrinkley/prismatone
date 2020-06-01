@@ -1,5 +1,6 @@
 <script>
   import { PolySynth, Synth } from "tone";
+  import * as Tone from "tone";
   import { group1, group2 } from "./helpers/haydenLayout";
   import { onMount } from "svelte";
   import TileSet from "./TileSet.svelte";
@@ -7,10 +8,8 @@
   import ScrollSwitch from "./ScrollSwitch.svelte";
 
   let synth, audioContext;
-  let noteTriggered;
-  let mouseDown = false;
+  let pointerDown = false;
   let toggle = false;
-  let currentNote;
 
   const tileSetPanels = [
     "panel-A-1",
@@ -44,51 +43,36 @@
 
   const noteAction = {
     noteOn: (e, noteState) => {
-      currentNote = e.target.id;
-
+      Tone.start();
+      pointerDown = true;
       noteState();
-      mouseDown = true;
       synth.triggerAttack(e.target.id);
-      e.target.releasePointerCapture(e.pointerId);
-      console.log(e.target);
+      console.log(e.pointerId);
+      // e.target.releasePointerCapture(e.pointerId);
+      console.log(e.pointerId);
     },
 
     noteOff: (e, noteState) => {
+      // e.target.ondragstart = () => false;
       noteState();
       synth.triggerRelease(e.target.id);
-      noteTriggered = false;
-      mouseDown = false;
+      pointerDown = false;
     },
 
     noteOnDrag: (e, noteState) => {
-      if (!mouseDown) return;
+      if (!pointerDown) return;
+      // e.target.ondragstart = () => false;
       noteState();
       synth.triggerAttack(e.target.id);
-      noteTriggered = true;
+      // e.target.releasePointerCapture(e.pointerId);
     },
 
     noteOffDrag: (e, noteState) => {
-      if (!mouseDown) return;
+      if (!pointerDown) return;
+      // e.target.ondragstart = () => false;
       noteState();
       synth.triggerRelease(e.target.id);
-      noteTriggered = false;
-    },
-    noteOnTouch: (e, noteState) => {
-      if (currentNote !== e.target.id) {
-        console.log(e);
-      }
-      // console.log(e.target.id);
-      // noteState();
-      // mouseDown = true;
-      // synth.triggerAttack(e.target.id);
-      // console.log(e.changedTouches);
-    },
-
-    noteOffTouch: (e, noteState) => {
-      noteState();
-      synth.triggerRelease(e.target.id);
-      noteTriggered = false;
-      mouseDown = false;
+      pointerDown = false;
     }
   };
 

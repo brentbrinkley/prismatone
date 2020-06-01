@@ -11,8 +11,6 @@
     noteOff,
     noteOnDrag,
     noteOffDrag,
-    noteOnTouch,
-    noteOffTouch,
     noteTriggered;
 
   const setNoteStateOn = () => {
@@ -62,6 +60,8 @@
     justify-content: center;
     align-items: center;
     transition: all 0.1s ease-in;
+    touch-action: none;
+    -webkit-touch-action: none;
   }
 
   .hex:before,
@@ -77,15 +77,19 @@
     right: 0;
     bottom: 0;
     margin: auto;
+    touch-action: none;
   }
   .hex:before {
     transform: rotate(60deg);
+    touch-action: none;
   }
   .hex:after {
     transform: rotate(-60deg);
+    touch-action: none;
   }
   .triggered {
-    transform: scale(0.9);
+    /* transform: scale(0.9); */
+    opacity: 0.7;
   }
 
   .black {
@@ -166,15 +170,16 @@
 </style>
 
 <div
+  style="touch-action: none"
   class="{color}
   {shape}
   {groupClass} hex"
   {id}
   class:triggered={noteTriggered}
-  on:pointerdown|preventDefault|stopPropagation={e => noteOn(e, setNoteStateOn)}
-  on:pointerup|preventDefault|stopPropagation={e => noteOff(e, setNoteStateOff)}
-  on:pointerenter|preventDefault|stopPropagation={e => noteOnDrag(e, setNoteStateOn)}
-  on:pointerleave|preventDefault|stopPropagation={e => noteOffDrag(e, setNoteStateOff)}>
+  on:pointerdown|preventDefault|stopPropagation|self={e => noteOn(e, setNoteStateOn)}
+  on:pointerup|preventDefault|stopPropagation|self={e => noteOff(e, setNoteStateOff)}
+  on:pointerenter|preventDefault|stopPropagation|self={e => noteOnDrag(e, setNoteStateOn)}
+  on:pointerleave|preventDefault|stopPropagation|self={e => noteOffDrag(e, setNoteStateOff)}>
 
   {@html svg}
 </div>
