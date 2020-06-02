@@ -75,6 +75,6 @@
       id={note.commonNotation}
       {groupClass}
       noteTriggered={false}
-      {...noteAction} />
+      {noteAction} />
   {/each}
 </div>

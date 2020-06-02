@@ -9,7 +9,9 @@
 
   let synth, audioContext;
   let pointerDown = false;
-  let toggle = false;
+  let noteTriggered = false;
+  let toggle = true;
+  let doNotFire = false;
 
   const tileSetPanels = [
     "panel-A-1",
@@ -22,8 +24,6 @@
 
   onMount(() => {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-    window.scrollTo(183, 606);
 
     synth = new PolySynth(Synth, {
       oscillator: {
@@ -39,40 +39,41 @@
         releaseCurve: "exponential"
       }
     }).toDestination();
+
+    window.scrollTo(183, 606);
   });
 
-  const noteAction = {
-    noteOn: (e, noteState) => {
-      Tone.start();
-      pointerDown = true;
-      noteState();
-      synth.triggerAttack(e.target.id);
-      console.log(e.pointerId);
-      // e.target.releasePointerCapture(e.pointerId);
-      console.log(e.pointerId);
-    },
+  const noteAction = (e, triggerType, noteState) => {
+    switch (triggerType) {
+      case "note on":
+        pointerDown = true;
+        noteState();
+        synth.triggerAttack(e.target.id);
+        e.currentTarget.releasePointerCapture(e.pointerId);
+        break;
 
-    noteOff: (e, noteState) => {
-      // e.target.ondragstart = () => false;
-      noteState();
-      synth.triggerRelease(e.target.id);
-      pointerDown = false;
-    },
+      case "note off":
+        noteState();
+        pointerDown = false;
+        synth.triggerRelease(e.target.id);
+        break;
 
-    noteOnDrag: (e, noteState) => {
-      if (!pointerDown) return;
-      // e.target.ondragstart = () => false;
-      noteState();
-      synth.triggerAttack(e.target.id);
-      // e.target.releasePointerCapture(e.pointerId);
-    },
+      case "note in":
+        if (!pointerDown) break;
+        noteState();
+        synth.triggerAttack(e.target.id);
+        break;
 
-    noteOffDrag: (e, noteState) => {
-      if (!pointerDown) return;
-      // e.target.ondragstart = () => false;
-      noteState();
-      synth.triggerRelease(e.target.id);
-      pointerDown = false;
+      case "note out":
+        noteState();
+        synth.triggerRelease(e.target.id);
+        break;
+
+      case "cancel":
+        noteState();
+        synth.triggerRelease(e.target.id);
+        pointerDown = false;
+        break;
     }
   };
 

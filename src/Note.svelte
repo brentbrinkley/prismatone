@@ -2,16 +2,7 @@
   import { scale } from "svelte/transition";
   import { createEventDispatcher } from "svelte";
 
-  export let color,
-    shape,
-    id,
-    groupClass,
-    svg,
-    noteOn,
-    noteOff,
-    noteOnDrag,
-    noteOffDrag,
-    noteTriggered;
+  export let color, shape, id, groupClass, svg, noteAction, noteTriggered;
 
   const setNoteStateOn = () => {
     noteTriggered = true;
@@ -88,8 +79,8 @@
     touch-action: none;
   }
   .triggered {
-    /* transform: scale(0.9); */
-    opacity: 0.7;
+    transform: scale(0.9);
+    /* opacity: 0.7; */
   }
 
   .black {
@@ -176,10 +167,10 @@
   {groupClass} hex"
   {id}
   class:triggered={noteTriggered}
-  on:pointerdown|preventDefault|stopPropagation|self={e => noteOn(e, setNoteStateOn)}
-  on:pointerup|preventDefault|stopPropagation|self={e => noteOff(e, setNoteStateOff)}
-  on:pointerenter|preventDefault|stopPropagation|self={e => noteOnDrag(e, setNoteStateOn)}
-  on:pointerleave|preventDefault|stopPropagation|self={e => noteOffDrag(e, setNoteStateOff)}>
-
+  on:pointerdown|preventDefault|stopPropagation|self={e => noteAction(e, 'note on', setNoteStateOn)}
+  on:pointerup|preventDefault|stopPropagation|self={e => noteAction(e, 'note off', setNoteStateOff)}
+  on:pointerover|preventDefault|stopPropagation|self={e => noteAction(e, 'note in', setNoteStateOn)}
+  on:pointerout|preventDefault|stopPropagation|self={e => noteAction(e, 'note out', setNoteStateOff)}
+  on:pointercancel|preventDefault={e => noteAction(e, 'cancel', setNoteStateOff)}>
   {@html svg}
 </div>
