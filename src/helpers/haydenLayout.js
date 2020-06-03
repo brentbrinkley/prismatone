@@ -1,4 +1,4 @@
-import { initialNotes } from './notebuilder'
+import { initialNotes } from './noteBuilder'
 
 /* 
 |--------------------------------------------------------------------------
