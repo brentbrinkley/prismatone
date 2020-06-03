@@ -1,4 +1,4 @@
-import notes from './notebuilder.js'
+import { initialNotes } from './notebuilder'
 
 /* 
 |--------------------------------------------------------------------------
@@ -19,7 +19,7 @@ const wickihaydenPattern = [4, 2, 0, -2, -4, 6, 4, 2, 0, -2, -4, -6]
 */
 
 const updateNotePosition = pattern => {
-    notes.forEach(note => {
+    initialNotes.forEach(note => {
         note.position = note.midiVal + pattern[note.position]
     })
 }
@@ -42,7 +42,7 @@ updateNotePosition(wickihaydenPattern)
 |
 */
 
-const isomorphicNotes = notes.sort(
+const isomorphicNotes = initialNotes.sort(
     (note1, note2) => note1.position - note2.position
 )
 

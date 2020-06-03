@@ -111,4 +111,4 @@ notesData.forEach(note => {
     }
 })
 
-export default notesData
+export const initialNotes = notesData
