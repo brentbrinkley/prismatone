@@ -22,6 +22,6 @@
 </style>
 
 <div class="device-panel">
-  <img src="prismatone-2.svg" alt="prismatone" />
+  <img src="prismatone.svg" alt="prismatone" />
   <slot />
 </div>
