@@ -1,4 +1,4 @@
-import notes from './notebuilder'
+import notes from './notebuilder.js'
 
 /* 
 |--------------------------------------------------------------------------
