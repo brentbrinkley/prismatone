@@ -21,7 +21,7 @@
     border-radius: 100px;
     width: 35px;
     height: 15px;
-    background-color: rgb(90, 90, 90);
+    background-color: rgb(221, 221, 221);
     position: relative;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -35,7 +35,7 @@
     display: block;
     width: 20px;
     height: 20px;
-    background-color: rgb(139, 139, 139);
+    background: linear-gradient(180deg, #ffffff 0%, #e2e2e2 100%); /* here*/
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     border-radius: 50%;
     margin-top: -2.5px;
@@ -66,17 +66,6 @@
   }
 
   .cl-switch input[type="checkbox"]:checked + .switcher {
-    background-color: #f500568f;
-    /* opacity: 0.5; */
-  }
-
-  .cl-switch input[type="checkbox"]:checked + .switcher:before {
-    right: 100%;
-    margin-right: -20px;
-    background-color: #f50057;
-  }
-
-  .cl-switch input[type="checkbox"]:checked + .switcher {
     background-color: rgba(105, 65, 251, 0.445);
     /* opacity: 0.5; */
   }
@@ -84,7 +73,8 @@
   .cl-switch input[type="checkbox"]:checked + .switcher:before {
     right: 100%;
     margin-right: -20px;
-    background-color: #6a41fb;
+    background: linear-gradient(180deg, #aa93fd 0%, #6a41fb 100%);
+    /* color: #6a41fb; */
   }
 
   .cl-switch [disabled]:not([disabled="false"]) + .switcher {
@@ -113,7 +103,7 @@
 
   .cl-switch.cl-switch-large .label {
     font-size: 18px;
-    color: #0000008a;
+    color: #6941fbb9;
   }
 
   .cl-switch.cl-switch-large input[type="checkbox"]:checked + .switcher:before {
@@ -362,18 +352,14 @@
     + .switcher:before {
     background-color: #fff;
   }
-
-  .cl-switch.ios.cl-switch-orange .switcher:active:before {
-    box-shadow: none;
-  }
 </style>
 
 <label class="cl-switch cl-switch-large" style="">
-  <span class="label" style="user-select: none">Play</span>
+  <span class="label" style="user-select: none">play</span>
   <input
     type="checkbox"
     on:change|preventDefault={emitToggle}
     bind:checked={toggle} />
   <span class="switcher" />
-  <span class="label" style="user-select: none">Lock</span>
+  <span class="label" style="user-select: none">lock</span>
 </label>
