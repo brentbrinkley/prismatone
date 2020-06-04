@@ -11,7 +11,6 @@
   let pointerDown = false;
   let noteTriggered = false;
   let toggle = true;
-  let doNotFire = false;
 
   const tileSetPanels = [
     "panel-A-1",
