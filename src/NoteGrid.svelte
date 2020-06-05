@@ -9,8 +9,8 @@
 
   let synth, audioContext;
   let pointerDown = false;
-  let noteTriggered = false;
   let toggle = true;
+  let noteCapture = [];
 
   const tileSetPanels = [
     "panel-A-1",
@@ -38,6 +38,14 @@
         releaseCurve: "exponential"
       }
     }).toDestination();
+
+    window.addEventListener("pointerdown", e => {
+      pointerDown = true;
+    });
+
+    window.addEventListener("pointerup", e => {
+      pointerDown = false;
+    });
 
     window.scrollTo(183, 606);
   });
@@ -67,17 +75,12 @@
         noteState();
         synth.triggerRelease(e.target.id);
         break;
-
-      case "cancel":
-        noteState();
-        synth.triggerRelease(e.target.id);
-        pointerDown = false;
-        break;
     }
   };
 
   const setToggle = e => {
     toggle = e.detail;
+    Tone.context.resume();
   };
 </script>
 

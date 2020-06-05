@@ -161,16 +161,15 @@
 </style>
 
 <div
-  style="touch-action: none"
+  style="touch-action: none;"
   class="{color}
   {shape}
   {groupClass} hex"
   {id}
   class:triggered={noteTriggered}
-  on:pointerdown|preventDefault|stopPropagation|self={e => noteAction(e, 'note on', setNoteStateOn)}
-  on:pointerup|preventDefault|stopPropagation|self={e => noteAction(e, 'note off', setNoteStateOff)}
-  on:pointerover|preventDefault|stopPropagation|self={e => noteAction(e, 'note in', setNoteStateOn)}
-  on:pointerout|preventDefault|stopPropagation|self={e => noteAction(e, 'note out', setNoteStateOff)}
-  on:pointercancel|preventDefault={e => noteAction(e, 'cancel', setNoteStateOff)}>
+  on:pointerdown|preventDefault|stopPropagation={e => noteAction(e, 'note on', setNoteStateOn)}
+  on:pointerup|preventDefault|stopPropagation={e => noteAction(e, 'note off', setNoteStateOff)}
+  on:pointerover|preventDefault|stopPropagation={e => noteAction(e, 'note in', setNoteStateOn)}
+  on:pointerout|preventDefault|stopPropagation={e => noteAction(e, 'note out', setNoteStateOff)}>
   {@html svg}
 </div>
