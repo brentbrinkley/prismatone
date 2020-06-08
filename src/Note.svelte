@@ -19,7 +19,9 @@
     height: 50%;
     pointer-events: none;
     opacity: 0.4;
-    filter: drop-shadow(2px 3px 3px rgba(255, 255, 255, 0.2));
+    /* filter: drop-shadow(2px 3px 3px rgba(255, 255, 255, 0.2)); */
+    filter: drop-shadow(2px 3px 3px rgba(2, 0, 1, 0.2));
+    /* filter: drop-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.07)); */
     touch-action: none;
   }
 
@@ -118,14 +120,6 @@
   .blue {
     background: linear-gradient(to top left, #1976d2 0%, #283593 100%);
     color: #1c68c5;
-  }
-  .green-light {
-    background: linear-gradient(to top left, #cddc39 0%, #8bc34a 100%);
-    color: #7cb342;
-  }
-  .green-dark {
-    background: linear-gradient(to top left, #4caf50 0%, #1b5e20 100%);
-    color: #00944a;
   }
   .grey {
     background: linear-gradient(to top left, #e0e0e0 0%, #bdbdbd 100%);
