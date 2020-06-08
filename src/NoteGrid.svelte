@@ -10,7 +10,7 @@
   let synth, audioContext;
   let pointerDown = false;
   let toggle = true;
-  let noteCapture = [];
+  // let noteCapture;
 
   const tileSetPanels = [
     "panel-A-1",
@@ -56,6 +56,8 @@
         pointerDown = true;
         noteState();
         synth.triggerAttack(e.target.id);
+        console.log(e.target.id);
+        // noteCapture = e.target.id;
         e.currentTarget.releasePointerCapture(e.pointerId);
         break;
 
