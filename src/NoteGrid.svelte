@@ -10,7 +10,6 @@
   let synth, audioContext;
   let pointerDown = false;
   let toggle = true;
-  // let noteCapture;
 
   const tileSetPanels = [
     "panel-A-1",
@@ -57,7 +56,6 @@
         noteState();
         synth.triggerAttack(e.target.id);
         console.log(e.target.id);
-        // noteCapture = e.target.id;
         e.currentTarget.releasePointerCapture(e.pointerId);
         break;
 
@@ -101,18 +99,23 @@
   .master-grid {
     display: grid;
     grid-template-columns: repeat(36, 50px);
-    grid-template-rows: repeat(8, 88px);
+    grid-template-rows: repeat(28, 88px);
     grid-gap: 2px;
     touch-action: pan-x pan-y;
+    /* background-color: red; */
   }
 
   .no-touch {
     z-index: 100;
     pointer-events: none;
   }
+
+  .outer-container {
+    /* background-color: red; */
+  }
 </style>
 
-<div>
+<div class="outer-container">
   <div class="master-grid" bind:this={synth} class:no-touch={toggle}>
     <!-- Setting different classes for our tilesets -->
     {#each tileSetPanels as panel, index}

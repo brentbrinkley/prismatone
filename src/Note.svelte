@@ -26,8 +26,8 @@
   }
 
   :global(#minus) {
-    height: 35%;
-    width: 35%;
+    height: 32%;
+    width: 32%;
   }
   :global(#crown) {
     height: 40%;
@@ -40,6 +40,20 @@
   :global(#square) {
     height: 40%;
     width: 40%;
+  }
+
+  :global(#moon) {
+    height: 45%;
+    width: 45%;
+  }
+  :global(#key) {
+    height: 45%;
+    width: 45%;
+  }
+
+  :global(#plus) {
+    height: 47%;
+    width: 47%;
   }
 
   .hex {

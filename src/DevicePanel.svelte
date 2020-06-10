@@ -17,11 +17,11 @@
   }
 
   img {
-    max-width: 11em;
+    max-width: 9em;
   }
 </style>
 
 <div class="device-panel">
-  <img src="prismatone.svg" alt="prismatone" />
+  <img src="title.svg" alt="prismatone" />
   <slot />
 </div>

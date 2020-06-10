@@ -63,9 +63,12 @@
     grid-column-start: 30;
     touch-action: none;
   }
+  .container {
+    /* background-color: red; */
+  }
 </style>
 
-<div class={panelName}>
+<div class="{panelName} container">
 
   {#each group as note (note.midiVal)}
     <Note
