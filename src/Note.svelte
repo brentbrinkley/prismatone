@@ -124,7 +124,7 @@
     color: #7127a8;
   }
   .green {
-    background: linear-gradient(to top left, #4db6ac 0%, #00796b 100%);
+    background: linear-gradient(to top left, #4db6ac 0%, #00796b 80%);
     color: #34a297;
   }
   .cyan {

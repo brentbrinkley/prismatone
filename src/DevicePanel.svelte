@@ -14,6 +14,8 @@
     user-select: none;
     justify-content: space-around;
     align-items: center;
+    align-content: center;
+    justify-items: center;
   }
 
   img {
@@ -22,6 +24,6 @@
 </style>
 
 <div class="device-panel">
-  <img src="title.svg" alt="prismatone" />
+  <img src="mosaic.svg" alt="prismatone" />
   <slot />
 </div>
