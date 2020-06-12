@@ -587,7 +587,7 @@ const buildNotes = () => {
                 shape,
                 midiVal: counter,
                 commonNotation: oldNotation[counter],
-                svg: noteData.neu_svg_shapes[index],
+                svg: noteData.indent_svg_shapes[index],
                 filtered: false,
                 position: index
             })
