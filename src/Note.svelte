@@ -18,9 +18,9 @@
     width: 50%;
     height: 50%;
     pointer-events: none;
-    opacity: 0.4;
+    /* opacity: 0.7; */
     /* filter: drop-shadow(2px 3px 3px rgba(255, 255, 255, 0.2)); */
-    filter: drop-shadow(2px 3px 3px rgba(2, 0, 1, 0.2));
+    /* filter: drop-shadow(2px 3px 3px rgba(2, 0, 1, 0.2)); */
     /* filter: drop-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.07)); */
     touch-action: none;
   }
@@ -100,7 +100,7 @@
   }
 
   .black {
-    background: linear-gradient(to top left, #7c7c7c 0%, #000 100%);
+    background: linear-gradient(180deg, #7c7c7c 0%, #000 100%);
     color: #4a4a4a;
   }
   .orange {
@@ -124,7 +124,7 @@
     color: #7127a8;
   }
   .green {
-    background: linear-gradient(to top left, #4db6ac 0%, #00796b 80%);
+    background: linear-gradient(90deg, #4db6ac 0%, #00796b 80%);
     color: #34a297;
   }
   .cyan {
