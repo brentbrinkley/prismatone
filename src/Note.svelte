@@ -24,7 +24,7 @@
     touch-action: none;
   }
 
-  :global(#minus) {
+  /* :global(#minus) {
     height: 32%;
     width: 32%;
   }
@@ -53,7 +53,7 @@
   :global(#plus) {
     height: 47%;
     width: 47%;
-  }
+  } */
 
   .hex {
     will-change: opacity, transform;
@@ -179,13 +179,13 @@
   }
 
   .yellow {
-    background: linear-gradient(180deg, #fed901 -40%, #ffba01 140%);
+    background: linear-gradient(180deg, #ffde1e -40%, #ffc731 140%);
   }
   .yellow::before {
-    background: linear-gradient(120deg, #fed901 0%, #ffba01 98.96%);
+    background: linear-gradient(120deg, #ffde1e 0%, #ffc731 98.96%);
   }
   .yellow::after {
-    background: linear-gradient(240deg, #fed901 0%, #ffba01 98.96%);
+    background: linear-gradient(240deg, #ffde1e 0%, #ffc731 98.96%);
   }
 
   .orange {
