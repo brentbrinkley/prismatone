@@ -15,8 +15,8 @@
 <style>
   :global(svg) {
     z-index: 1;
-    width: 50%;
-    height: 50%;
+    /* width: 50%;
+    height: 50%; */
     pointer-events: none;
     /* opacity: 0.7; */
     /* filter: drop-shadow(2px 3px 3px rgba(255, 255, 255, 0.2)); */
@@ -25,7 +25,7 @@
     touch-action: none;
   }
 
-  :global(#minus) {
+  /* :global(#minus) {
     height: 32%;
     width: 32%;
   }
@@ -54,7 +54,7 @@
   :global(#plus) {
     height: 47%;
     width: 47%;
-  }
+  } */
 
   .hex {
     will-change: opacity, transform;
