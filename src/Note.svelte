@@ -17,7 +17,6 @@
     z-index: 1;
     width: 2em;
     pointer-events: none;
-    /* opacity: 0.4; */
     /* filter: drop-shadow(2px 3px 3px rgba(255, 255, 255, 0.2)); */
     /* filter: drop-shadow(2px 3px 3px rgba(2, 0, 1, 0.2)); */
     /* filter: drop-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.07)); */
