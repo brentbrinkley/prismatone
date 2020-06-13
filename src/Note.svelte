@@ -15,8 +15,8 @@
 <style>
   :global(svg) {
     z-index: 1;
-    /* width: 50%;
-    height: 50%; */
+    width: 50%;
+    height: 50%;
     pointer-events: none;
     /* opacity: 0.7; */
     /* filter: drop-shadow(2px 3px 3px rgba(255, 255, 255, 0.2)); */
@@ -25,7 +25,7 @@
     touch-action: none;
   }
 
-  /* :global(#minus) {
+  :global(#minus) {
     height: 32%;
     width: 32%;
   }
@@ -54,7 +54,7 @@
   :global(#plus) {
     height: 47%;
     width: 47%;
-  } */
+  }
 
   .hex {
     will-change: opacity, transform;
@@ -100,7 +100,7 @@
   }
 
   .black {
-    background: linear-gradient(180deg, #7c7c7c 0%, #000 100%);
+    background: linear-gradient(to top left, #7c7c7c 0%, #000 100%);
     color: #4a4a4a;
   }
   .orange {
@@ -124,7 +124,7 @@
     color: #7127a8;
   }
   .green {
-    background: linear-gradient(90deg, #4db6ac 0%, #00796b 80%);
+    background: linear-gradient(to top left, #4db6ac 0%, #00796b 80%);
     color: #34a297;
   }
   .cyan {
