@@ -15,17 +15,15 @@
 <style>
   :global(svg) {
     z-index: 1;
-    width: 50%;
-    height: 50%;
+    width: 2em;
     pointer-events: none;
-    /* opacity: 0.7; */
     /* filter: drop-shadow(2px 3px 3px rgba(255, 255, 255, 0.2)); */
     /* filter: drop-shadow(2px 3px 3px rgba(2, 0, 1, 0.2)); */
     /* filter: drop-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.07)); */
     touch-action: none;
   }
 
-  :global(#minus) {
+  /* :global(#minus) {
     height: 32%;
     width: 32%;
   }
@@ -54,7 +52,7 @@
   :global(#plus) {
     height: 47%;
     width: 47%;
-  }
+  } */
 
   .hex {
     will-change: opacity, transform;
@@ -99,49 +97,134 @@
     /* opacity: 0.7; */
   }
 
-  .black {
-    background: linear-gradient(to top left, #7c7c7c 0%, #000 100%);
-    color: #4a4a4a;
-  }
-  .orange {
-    background: linear-gradient(to top left, #ffc107 0%, #f57c00 100%);
-    color: #f68401;
-  }
-  .pink {
-    background: linear-gradient(to top left, #f48fb1 0%, #d81b60 100%);
-    color: #dc306f;
-  }
-  .yellow {
-    background: linear-gradient(to top left, #ffeb3b 0%, #fbc02d 100%);
-    color: #ffb300;
-  }
-  .red {
-    background: linear-gradient(to top left, #f4511e 0%, #b71c1c 100%);
-    color: #c62828;
-  }
-  .purple {
-    background: linear-gradient(to top left, #ab47bc 0%, #4527a0 100%);
-    color: #7127a8;
-  }
-  .green {
-    background: linear-gradient(to top left, #4db6ac 0%, #00796b 80%);
-    color: #34a297;
-  }
-  .cyan {
-    background: linear-gradient(to top left, #4fc3f7 0%, #2196f3 100%);
-    color: #259af3;
-  }
-  .blue {
-    background: linear-gradient(to top left, #1976d2 0%, #283593 100%);
-    color: #1c68c5;
-  }
   .grey {
-    background: linear-gradient(to top left, #e0e0e0 0%, #bdbdbd 100%);
-    color: #9e9e9e;
+    background: linear-gradient(180deg, #d1cfd0 -40%, #a4a4a4 140%);
   }
+  .grey::before {
+    background: linear-gradient(120deg, #d1cfd0 0%, #a4a4a4 100%);
+  }
+  .grey::after {
+    background: linear-gradient(240deg, #d1cfd0 0%, #a4a4a4 100%);
+  }
+
+  .pink {
+    background: linear-gradient(180deg, #fd93d3 -40%, #fb41c7 140%);
+  }
+  .pink::before {
+    background: linear-gradient(120deg, #fd93d3 0%, #fb41c7 100%);
+  }
+  .pink::after {
+    background: linear-gradient(240deg, #fd93d3 0%, #fb41c7 100%);
+  }
+
+  .purple {
+    background: linear-gradient(180deg, #aa93fd -40%, #6a41fb 140%);
+  }
+  .purple::before {
+    background: linear-gradient(120deg, #aa93fd 0%, #6a41fb 100%);
+  }
+  .purple::after {
+    background: linear-gradient(240deg, #aa93fd 0%, #6a41fb 100%);
+  }
+
+  /* .blue {
+    background: linear-gradient(180deg, #93b1fd -40%, #415ffb 140%);
+  }
+  .blue::before {
+    background: linear-gradient(120deg, #93b1fd 0%, #415ffb 99.23%);
+  }
+  .blue::after {
+    background: linear-gradient(240deg, #93b1fd 0%, #415ffb 99.23%);
+  } */
+
+  .blue {
+    background: linear-gradient(180deg, #5199e1 -40%, #3d50db 140%);
+  }
+  .blue::before {
+    background: linear-gradient(120deg, #5199e1 0%, #3d50db 100%);
+  }
+  .blue::after {
+    background: linear-gradient(240deg, #5199e1 0%, #3d50db 100%);
+  }
+
+  .cyan {
+    background: linear-gradient(180deg, #87e1f4 -40%, #30b6e0 140%);
+  }
+  .cyan::before {
+    background: linear-gradient(120deg, #87e1f4 0%, #30b6e0 100%);
+  }
+  .cyan::after {
+    background: linear-gradient(240deg, #87e1f4 0%, #30b6e0 100%);
+  }
+
+  /* .green {
+    background: linear-gradient(180deg, #93fdb1 -40%, #06b05f 140%);
+  }
+  .green::before {
+    background: linear-gradient(120deg, #93fdb1 0%, #06b05f 100%);
+  }
+  .green::after {
+    background: linear-gradient(240deg, #93fdb1 0%, #06b05f 100%);
+  } */
+
+  .green {
+    background: linear-gradient(180deg, #59c1b7 -40%, #039988 140%);
+  }
+  .green::before {
+    background: linear-gradient(120deg, #59c1b7 0%, #039988 100%);
+  }
+  .green::after {
+    background: linear-gradient(240deg, #59c1b7 0%, #039988 100%);
+  }
+
+  .yellow {
+    background: linear-gradient(180deg, #ffde1e -40%, #ffc731 140%);
+  }
+  .yellow::before {
+    background: linear-gradient(120deg, #ffde1e 0%, #ffc731 98.96%);
+  }
+  .yellow::after {
+    background: linear-gradient(240deg, #ffde1e 0%, #ffc731 98.96%);
+  }
+
+  .orange {
+    background: linear-gradient(180deg, #ffb23e -40%, #ff820e 140%);
+  }
+  .orange::before {
+    background: linear-gradient(120deg, #ffb23e 0%, #ff820e 98.96%);
+  }
+  .orange::after {
+    background: linear-gradient(240deg, #ffb23e 0%, #ff820e 98.96%);
+  }
+
+  .red {
+    background: linear-gradient(180deg, #fe6363 -40%, #dc4040 140%);
+  }
+  .red::before {
+    background: linear-gradient(120deg, #fe6363 0%, #dc4040 98.96%);
+  }
+  .red::after {
+    background: linear-gradient(240deg, #fe6363 0%, #dc4040 98.96%);
+  }
+
+  .black {
+    background: linear-gradient(180deg, #7d7b7b -40%, #2e2d2d 140%);
+  }
+  .black::before {
+    background: linear-gradient(120deg, #7d7b7b 0%, #2e2d2d 98.96%);
+  }
+  .black::after {
+    background: linear-gradient(240deg, #7d7b7b 0%, #2e2d2d 98.96%);
+  }
+
   .gold {
-    background: linear-gradient(to top left, #e6ce6a 0%, #b7892b 100%);
-    color: #b7892b;
+    background: linear-gradient(180deg, #f6ef9f -40%, #b07e1f 140%);
+  }
+  .gold::before {
+    background: linear-gradient(120deg, #f6ef9f -5.18%, #b07e1f 102.3%);
+  }
+  .gold::after {
+    background: linear-gradient(240deg, #f6ef9f -5.18%, #b07e1f 102.3%);
   }
 
   .span1 {
