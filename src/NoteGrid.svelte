@@ -6,6 +6,8 @@
   import TileSet from "./TileSet.svelte";
   import DevicePanel from "./DevicePanel.svelte";
   import ScrollSwitch from "./ScrollSwitch.svelte";
+  import Logo from "./Logo.svelte";
+  import InstrumentSelect from "./InstrumentSelect.svelte";
 
   let synth, audioContext;
   let pointerDown = false;
@@ -17,7 +19,7 @@
     "panel-A-2",
     "panel-B-2",
     "panel-A-3",
-    "panel-B-3"
+    "panel-B-3",
   ];
 
   onMount(() => {
@@ -25,7 +27,7 @@
 
     synth = new PolySynth(Synth, {
       oscillator: {
-        type: "sine"
+        type: "sine",
       },
       envelope: {
         attack: 0.01,
@@ -34,15 +36,15 @@
         release: 1.2,
         attackCurve: "linear",
         decayCurve: "exponential",
-        releaseCurve: "exponential"
-      }
+        releaseCurve: "exponential",
+      },
     }).toDestination();
 
-    window.addEventListener("pointerdown", e => {
+    window.addEventListener("pointerdown", (e) => {
       pointerDown = true;
     });
 
-    window.addEventListener("pointerup", e => {
+    window.addEventListener("pointerup", (e) => {
       pointerDown = false;
     });
 
@@ -55,7 +57,6 @@
         pointerDown = true;
         noteState();
         synth.triggerAttack(e.target.id);
-        console.log(e.target.id);
         e.currentTarget.releasePointerCapture(e.pointerId);
         break;
 
@@ -78,7 +79,7 @@
     }
   };
 
-  const setToggle = e => {
+  const setToggle = (e) => {
     toggle = e.detail;
     Tone.context.resume();
   };
@@ -102,21 +103,16 @@
     grid-template-rows: repeat(28, 88px);
     grid-gap: 2px;
     touch-action: pan-x pan-y;
-    /* background-color: red; */
   }
 
   .no-touch {
     z-index: 100;
     pointer-events: none;
   }
-
-  .outer-container {
-    /* background-color: red; */
-  }
 </style>
 
-<div class="outer-container">
-  <div class="master-grid" bind:this={synth} class:no-touch={toggle}>
+<div>
+  <div class="master-grid" class:no-touch={toggle}>
     <!-- Setting different classes for our tilesets -->
     {#each tileSetPanels as panel, index}
       {#if index % 2 === 0}
@@ -135,6 +131,8 @@
     {/each}
   </div>
   <DevicePanel>
+    <!-- <InstrumentSelect /> -->
+    <Logo />
     <ScrollSwitch on:setToggle={setToggle} />
   </DevicePanel>
 </div>

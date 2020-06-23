@@ -7,6 +7,7 @@
   const setNoteStateOn = () => {
     noteTriggered = true;
   };
+
   const setNoteStateOff = () => {
     noteTriggered = false;
   };
@@ -17,45 +18,11 @@
     z-index: 1;
     width: 2em;
     pointer-events: none;
-    /* filter: drop-shadow(2px 3px 3px rgba(255, 255, 255, 0.2)); */
-    /* filter: drop-shadow(2px 3px 3px rgba(2, 0, 1, 0.2)); */
-    /* filter: drop-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.07)); */
     touch-action: none;
   }
 
-  /* :global(#minus) {
-    height: 32%;
-    width: 32%;
-  }
-  :global(#crown) {
-    height: 40%;
-    width: 40%;
-  }
-  :global(#triangle) {
-    height: 40%;
-    width: 40%;
-  }
-  :global(#square) {
-    height: 40%;
-    width: 40%;
-  }
-
-  :global(#moon) {
-    height: 45%;
-    width: 45%;
-  }
-  :global(#key) {
-    height: 45%;
-    width: 45%;
-  }
-
-  :global(#plus) {
-    height: 47%;
-    width: 47%;
-  } */
-
   .hex {
-    will-change: opacity, transform;
+    will-change: transform;
     z-index: 10;
     position: relative;
     width: 6.2em;
@@ -127,16 +94,6 @@
     background: linear-gradient(240deg, #aa93fd 0%, #6a41fb 100%);
   }
 
-  /* .blue {
-    background: linear-gradient(180deg, #93b1fd -40%, #415ffb 140%);
-  }
-  .blue::before {
-    background: linear-gradient(120deg, #93b1fd 0%, #415ffb 99.23%);
-  }
-  .blue::after {
-    background: linear-gradient(240deg, #93b1fd 0%, #415ffb 99.23%);
-  } */
-
   .blue {
     background: linear-gradient(180deg, #5199e1 -40%, #3d50db 140%);
   }
@@ -156,16 +113,6 @@
   .cyan::after {
     background: linear-gradient(240deg, #87e1f4 0%, #30b6e0 100%);
   }
-
-  /* .green {
-    background: linear-gradient(180deg, #93fdb1 -40%, #06b05f 140%);
-  }
-  .green::before {
-    background: linear-gradient(120deg, #93fdb1 0%, #06b05f 100%);
-  }
-  .green::after {
-    background: linear-gradient(240deg, #93fdb1 0%, #06b05f 100%);
-  } */
 
   .green {
     background: linear-gradient(180deg, #59c1b7 -40%, #039988 140%);
@@ -258,9 +205,9 @@
   {groupClass} hex"
   {id}
   class:triggered={noteTriggered}
-  on:pointerdown|preventDefault|stopPropagation={e => noteAction(e, 'note on', setNoteStateOn)}
-  on:pointerup|preventDefault|stopPropagation={e => noteAction(e, 'note off', setNoteStateOff)}
-  on:pointerover|preventDefault|stopPropagation={e => noteAction(e, 'note in', setNoteStateOn)}
-  on:pointerout|preventDefault|stopPropagation={e => noteAction(e, 'note out', setNoteStateOff)}>
+  on:pointerdown|preventDefault|stopPropagation={(e) => noteAction(e, 'note on', setNoteStateOn)}
+  on:pointerup|preventDefault|stopPropagation={(e) => noteAction(e, 'note off', setNoteStateOff)}
+  on:pointerover|preventDefault|stopPropagation={(e) => noteAction(e, 'note in', setNoteStateOn)}
+  on:pointerout|preventDefault|stopPropagation={(e) => noteAction(e, 'note out', setNoteStateOff)}>
   {@html svg}
 </div>

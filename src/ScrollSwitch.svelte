@@ -66,14 +66,20 @@
   }
 
   .cl-switch input[type="checkbox"]:checked + .switcher {
-    background-color: rgba(105, 65, 251, 0.445);
+    /* background-color: rgba(105, 65, 251, 0.445); */
+    background-color: rgb(83, 83, 83);
     /* opacity: 0.5; */
   }
 
   .cl-switch input[type="checkbox"]:checked + .switcher:before {
     right: 100%;
     margin-right: -20px;
-    background: linear-gradient(180deg, #aa93fd 0%, #6a41fb 100%);
+    /* background: linear-gradient(180deg, #aa93fd 0%, #6a41fb 100%); */
+    background: linear-gradient(
+      180deg,
+      rgb(182, 182, 182) 0%,
+      rgb(58, 58, 58) 100%
+    );
     /* color: #6a41fb; */
   }
 
@@ -103,7 +109,9 @@
 
   .cl-switch.cl-switch-large .label {
     font-size: 18px;
-    color: #6941fbb9;
+    color: rgb(54, 54, 54);
+    font-family: Avenir;
+    user-select: none;
   }
 
   .cl-switch.cl-switch-large input[type="checkbox"]:checked + .switcher:before {

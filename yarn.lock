@@ -590,10 +590,10 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-tone@^14.7.3:
-  version "14.7.3"
-  resolved "https://registry.yarnpkg.com/tone/-/tone-14.7.3.tgz#34d7fa61bb91a32723065cf1954043b6e07e79bc"
-  integrity sha512-okts8Inxjt4KbZXHTBr2TCglY24qjoMZqmAbP31To2/uWKiMUo1pyJ/j4V5KYVf+buIp10X+tbTAiepFUG7Plw==
+tone@^14.7.9:
+  version "14.7.9"
+  resolved "https://registry.yarnpkg.com/tone/-/tone-14.7.9.tgz#78cb46c7251adb7d00c13c1780522edc4c6444a6"
+  integrity sha512-HGWLJPATuySYCQ2zueDETdNcXCDZRWoVdKIfmz8jobZI92xRY5DdyFzQfer/gCP0PE5gwH4vvoHjYZ5LCaGakw==
   dependencies:
     standardized-audio-context "^24.1.5"
     tslib "^1.10.0"
